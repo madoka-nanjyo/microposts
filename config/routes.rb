@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
-
   root to: 'static_pages#home'
   get    'signup', to: 'users#new'
   get    'login' , to: 'sessions#new'
@@ -9,5 +7,6 @@ Rails.application.routes.draw do
   get    'setting' , to: 'sessions#edit'
 
   resources :users
-  resources :sessions, only: [:new, :create, :destroy, :edit, :update]
+  resources :sessions, only: [:new, :create, :destroy]
+  resource :microposts
 end

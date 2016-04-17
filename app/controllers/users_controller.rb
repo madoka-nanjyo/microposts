@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
-  def show # 追加
-   @user = User.find(params[:id])
-  end 
+    before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :followings, :followers]
+    before_action :correct_user,   only: [:edit, :update]
+   
+  def show
+    @user = User.find(params[:id])
+  end
   
   def new
     @user = User.new
@@ -17,9 +20,9 @@ class UsersController < ApplicationController
     end
   end
   
-def edit
+ def edit
     @user = User.find(params[:id])
-end
+ end
 
   def update
     @user = User.find(params[:id])
@@ -30,6 +33,17 @@ end
     end
   end
 
+  def followings
+    @title = "Following"
+    @users = @user.following_users.paginate(page: params[:page], :per_page => 5)
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @users = @user.follower_users.paginate(page: params[:page], :per_page => 5)
+    render 'show_follow'
+  end
   
   private
 
@@ -52,5 +66,8 @@ end
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
     end
+    
+  
+
   
 end
