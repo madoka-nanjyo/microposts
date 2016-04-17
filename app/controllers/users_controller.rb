@@ -1,11 +1,14 @@
 class UsersController < ApplicationController
     before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :followings, :followers]
     before_action :correct_user,   only: [:edit, :update]
-   
+    
   def show
     @user = User.find(params[:id])
-    @microposts = @user.microposts.order(created_at: :desc)
+    @microposts = @user.microposts.order(created_at: :desc).page(params[:page]).per(10)
+    @following_users = @user.following_users.all
+    @follower_users = @user.follower_users.all    
   end
+
   
   def new
     @user = User.new
@@ -33,19 +36,18 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
-
   def followings
     @title = "Following"
-    @users = @user.following_users.paginate(page: params[:page], :per_page => 5)
-    render 'show_follow'
+    @user = User.find(params[:id])
+    @following_users = @user.following_users.all
   end
 
   def followers
     @title = "Followers"
-    @users = @user.follower_users.paginate(page: params[:page], :per_page => 5)
-    render 'show_follow'
+    @user = User.find(params[:id])
+    @follower_users = @user.follower_users.all
   end
-  
+
   private
 
   def user_params
