@@ -1,20 +1,27 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
-      <h1>
-        
-<%= gravatar_for @user %>
 
-        
+<div>
+<%= gravatar_for @user %> 
+
 <%= @user.name %>
-
-      </h1>
+</div>
+<div>
+email:<%= @user.email %>
+</div>
+<div>
+area:<%= @user.area %>
+</div>
+ 
     </section>
   </aside>
   <div class="col-md-8">
-    
+
 <%= render 'follow_form' if logged_in? %>
-    
+
+
+
 <% if @user.microposts.any? %>
 
       <h3>Microposts (
@@ -27,6 +34,30 @@
       </ol>
     
 <% end %>
+
+<%# フォロワー %>
+
+
+
+      <h3>follower (<%= @user.follower_users.count %>)</h3>
+     <ol class="follow_users">
+ 
+          <%= render partial: 'follower_user', collection: @users %>
+        
+      </ol>
+
+<%# フォロー %>
+
+
+
+      <h3>following (
+<%= @user.following_users.count %>
+)</h3>
+           <ol class="following_users">
+          <%= render partial: 'following_user', collection: @users %>
+     
+      </ol>
+
 
   </div>
 </div>
