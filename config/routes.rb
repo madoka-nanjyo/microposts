@@ -5,22 +5,18 @@ Rails.application.routes.draw do
   post   'login' , to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   get    'setting' , to: 'sessions#edit'
-<<<<<<< HEAD
   resources :users do
    member do
      get :followings, :followers
    end
  end
  
-=======
    resources :users do
    member do
      get :following, :followers
    end
  end
- 
 
->>>>>>> user-profile
   
   resources :users
   resources :sessions, only: [:new, :create, :destroy, :edit, :update]
