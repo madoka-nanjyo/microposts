@@ -8,6 +8,10 @@
       <span><b>Microposts:</b> <%= @user.microposts.count %></span>
     </section>
     <section class="stats">
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> user-profile
       <% if @users.any? %>
         <div class="user_avatars">
           <% @users.each do |user| %>
@@ -17,11 +21,15 @@
       <% end %>
       </section>
   </aside>
+<<<<<<< HEAD
   
+=======
+>>>>>>> user-profile
   <div class="col-md-8">
     <h3><%= @title %></h3>
     <% if @users.any? %>
       <ul class=" microposts users follow">
+<<<<<<< HEAD
               </ul>
     <% end %>
           <% if @users.any? %>
@@ -31,5 +39,11 @@
           <% end %>
         </div>
       <% end %>
+=======
+        <%= render partial: 'follower_user', collection: @users %>
+      </ul>
+    
+    <% end %>
+>>>>>>> user-profile
   </div>
 </div>

@@ -11,10 +11,16 @@
 email:<%= @user.email %>
 </div>
 <div>
+<<<<<<< HEAD
     
 area:<%= @user.area %>
 </div>
 <%= link_to "following", followings_user_path(@user) %>
+=======
+area:<%= @user.area %>
+</div>
+<%= link_to "following", following_user_path(@user) %>
+>>>>>>> user-profile
 <%= link_to "follower", followers_user_path(@user) %>
  
     </section>
@@ -38,3 +44,32 @@ area:<%= @user.area %>
     
 <% end %>
 
+<<<<<<< HEAD
+=======
+<%# フォロワー %>
+
+
+
+      <h3>follower (<%= @user.follower_users.count %>)</h3>
+     <ol class="follow_users">
+ 
+          <%= render partial: 'follower_user', collection: @users %>
+        
+      </ol>
+
+<%# フォロー %>
+
+
+
+      <h3>following (
+<%= @user.following_users.count %>
+)</h3>
+           <ol class="following_users">
+          <%= render partial: 'following_user', collection: @users %>
+     
+      </ol>
+
+
+  </div>
+</div>
+>>>>>>> user-profile
