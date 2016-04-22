@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def following
+  def followings
     @user = User.find(params[:id])
     @title = "Following"
     @users = @user.following_users

@@ -1,0 +1,11 @@
+<h1>Followers List</h1>
+
+<hr>
+
+<% @users.each do |user| %>
+  <div class="row">
+    <%= link_to gravatar_for(user), user %>
+    <%= link_to user.name, user %>
+  </div>
+  <hr>
+<% end %>

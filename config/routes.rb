@@ -4,22 +4,14 @@ Rails.application.routes.draw do
   get    'login' , to: 'sessions#new'
   post   'login' , to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
-  get    'profile' ,to:'users#followers'
-  get 'setting' , to: 'sessions#edit'
-   resources :users do
-member do
-  get :followings
-  get :followers
- end
-end
 
- 
-
-  
-  resources :users
-  resources :sessions, only: [:new, :create, :destroy, :edit, :update]
+  resources :users do
+    member do
+      get 'followings'
+      get 'followers'
+    end
+  end
+  resources :sessions, only: [:new, :create, :destroy]
   resources :microposts
   resources :relationships, only: [:create, :destroy]
-  resources :following_users
-  resources :follower_users
 end
