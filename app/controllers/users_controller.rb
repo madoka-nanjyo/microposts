@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.order(created_at: :desc)
+    @following_users = @user.following_users
+    @follower_users = @user.follower_users    
   end
   
   def new
