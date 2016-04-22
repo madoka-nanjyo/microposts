@@ -23,6 +23,7 @@
     <% if @users.any? %>
       <ul class=" microposts users follow">
         <%= render partial: 'follower_user', collection: @users %>
+        
       </ul>
     
     <% end %>

@@ -5,12 +5,14 @@ Rails.application.routes.draw do
   post   'login' , to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   get    'profile' ,to:'users#followers'
+  get 'setting' , to: 'sessions#edit'
    resources :users do
-　member do
+member do
   get :followings
   get :followers
-end
  end
+end
+
  
 
   
