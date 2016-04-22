@@ -33,8 +33,9 @@ area:<%= @user.area %>
         
 <%= render @microposts %>
 
+
       </ol>
-    
+   <%= paginate @microposts %> 
 <% end %>
 
 <%# フォロワー %>
